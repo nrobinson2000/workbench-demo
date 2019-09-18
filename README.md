@@ -1,35 +1,49 @@
 # workbench-demo
 
-A Particle project named workbench-demo
+Copied from: https://community.particle.io/t/working-with-github-remote/51939/2?u=nrobinson2000
 
-## Welcome to your project!
+So I think the best first step would be to create a new repository on GitHub that you will connect to your project in Workbench.
 
-Every new Particle project is composed of 3 important elements that you'll see have been created in your project directory for workbench-demo.
+<https://github.com/new>
 
-#### ```/src``` folder:  
-This is the source folder that contains the firmware files for your project. It should *not* be renamed. 
-Anything that is in this folder when you compile your project will be sent to our compile service and compiled into a firmware binary for the Particle device that you have targeted.
+![image|586x500](images/img-1.png) 
 
-If your application contains multiple files, they should all be included in the `src` folder. If your firmware depends on Particle libraries, those dependencies are specified in the `project.properties` file referenced below.
+Enter a Repository Name and leave **Initialize this repository with a README** unchecked.
 
-#### ```.ino``` file:
-This file is the firmware that will run as the primary application on your Particle device. It contains a `setup()` and `loop()` function, and can be written in Wiring or C/C++. For more information about using the Particle firmware API to create firmware for your Particle device, refer to the [Firmware Reference](https://docs.particle.io/reference/firmware/) section of the Particle documentation.
+Click <kbd>Create Repository</kbd>.
 
-#### ```project.properties``` file:  
-This is the file that specifies the name and version number of the libraries that your project depends on. Dependencies are added automatically to your `project.properties` file when you add a library to a project using the `particle library add` command in the CLI or add a library in the Desktop IDE.
+You will then see this screen.
 
-## Adding additional files to your project
+![image|653x500](images/img-2.png) 
 
-#### Projects with multiple sources
-If you would like add additional files to your application, they should be added to the `/src` folder. All files in the `/src` folder will be sent to the Particle Cloud to produce a compiled binary.
+From the **…or push an existing repository from the command line** section, copy the entire line beginning with `git remote add origin` to your clipboard. You will need this later.
 
-#### Projects with external libraries
-If your project includes a library that has not been registered in the Particle libraries system, you should create a new folder named `/lib/<libraryname>/src` under `/<project dir>` and add the `.h`, `.cpp` & `library.properties` files for your library there. Read the [Firmware Libraries guide](https://docs.particle.io/guide/tools-and-features/libraries/) for more details on how to develop libraries. Note that all contents of the `/lib` folder and subfolders will also be sent to the Cloud for compilation.
+Next, open your project folder in Visual Studio Code.
 
-## Compiling your project
+Open the Terminal by clicking the Problem menu on the bottom left, under the settings gear, and then click on TERMINAL. A terminal should open.
 
-When you're ready to compile your project, make sure you have the correct Particle device target selected and run `particle compile <platform>` in the CLI or click the Compile button in the Desktop IDE. The following files in your project folder will be sent to the compile service:
+![image|690x466](images/img-3.png) 
 
-- Everything in the `/src` folder, including your `.ino` application file
-- The `project.properties` file for your project
-- Any libraries stored under `lib/<libraryname>/src`
+In the terminal enter the following commands:
+```
+git init
+# This will create a git repository out of your project folder.
+git remote add origin https://github.com/...
+# This is the line that you copied from GitHub
+```
+
+Your project folder is now a git repository and connected to GitHub. You should see the pending changes in the Source Control tab.
+
+![image|690x466](images/img-4.png) 
+
+To upload the current state of your project to GitHub you can enter a commit message, click the plus to stage all changes, and then click the check to commit.
+
+Next, you will need to push the commit to GitHub.
+
+Click the push button on the bottom left to open the push menu. VSCode will ask for your GitHub credentials and then push your commit to the repository on GitHub.
+
+An easy way to confirm that the push worked is to refresh the repository page on GitHub. You should see your files and information about your commit.
+
+![image|675x500](images/img-5.png) 
+
+That's the basics of getting a workbench project up on GitHub. Let me know if you have any questions.
